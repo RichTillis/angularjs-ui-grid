@@ -1,21 +1,22 @@
 import angular from 'angular';
-import '@uirouter/angularjs';
 import 'angular-ui-grid';
 
 // Import your app stylesheets
 import './style.css';
 import './ui-grid.min.css'
 
-// Import your app functionality
-import './home'
+// Create an angular module named 'app'.
+angular.module('app', ['ui.grid']);
 
-// Create and bootstrap application
-const requires = [
-  'ui.router',
-  'home',
-  'ui.grid'
-];
+angular.module('app').controller('MainCtrl', function($scope) {
 
-window.app = angular.module('app', requires);
+  $scope.myData = [
+    {
+      firstName: 'Cox',
+      lastName: 'Carney'
+    }
+  ];
+});
 
+// Bootstrap angular onto the 'app' element, injecting the 'app' module.
 angular.bootstrap(document.getElementById('app'), ['app']);
